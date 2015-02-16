@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<core name="extension" version="0.1.0">
+  <macro name="add_code"/>
+  <macro name="add_code_within_context"/>
+  <macro name="add_imports"/>
+  <macro name="add_imports_within_context"/>
+</core>

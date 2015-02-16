@@ -1,0 +1,60 @@
+.template 1
+.
+.macro add_code_build(hook)
+. for c.code where hook = my.hook & !defined(code.app)
+$(code.?)
+. endfor
+.
+. for c.code where hook = my.hook & defined(code.app) & code.app = app.name
+$(code.?)
+. endfor
+.endmacro
+.
+.macro global.extension__add_code(context, hook)
+. for project.extension as e
+.   for e.$(my.context) as c
+.     add_code_build(my.hook)
+.   endfor
+. endfor
+.endmacro
+.
+.macro global.extension__add_code_within_context(context, subcontext, hook)
+. for project.extension as e
+.   for e.$(my.subcontext) as c where context = context
+.     add_code_build(my.hook)
+.   endfor
+. endfor
+.endmacro
+.
+.macro add_imports_import
+. for c.import as i
+.   if defined(i.import_from)
+from $(i.import_from:) \
+.   endif
+.
+import $(i.import:)\
+.
+.   if defined(i.alias)
+ as $(i.alias:)\
+.   endif
+
+. endfor
+.endmacro
+.
+.macro global.extension__add_imports(context)
+. for project.extension
+.   for extension.$(my.context) as c
+.     add_imports_import()
+.   endfor
+. endfor
+.endmacro
+.
+.macro global.extension__add_imports_within_context(context, subcontext)
+. for project.extension
+.   for extension.$(my.subcontext) as c where context = context
+.     add_imports_import()
+.   endfor
+. endfor
+.endmacro
+.
+.endtemplate
