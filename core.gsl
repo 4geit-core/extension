@@ -11,6 +11,7 @@ $(code.?)
 .endmacro
 .
 .macro global.extension__add_code(context, hook)
+. log('extension__add_code is deprecated.', 'DEPRECATED')
 . for project.extension as e
 .   for e.$(my.context) as c
 .     add_code_build(my.hook)
@@ -19,6 +20,7 @@ $(code.?)
 .endmacro
 .
 .macro global.extension__add_code_within_context(context, subcontext, hook)
+. log('extension__add_code_within_context is deprecated.', 'DEPRECATED')
 . for project.extension as e
 .   for e.$(my.subcontext) as c where context = context
 .     add_code_build(my.hook)
@@ -42,6 +44,7 @@ import $(i.import:)\
 .endmacro
 .
 .macro global.extension__add_imports(context)
+. log('extension__add_imports is deprecated.', 'DEPRECATED')
 . for project.extension
 .   for extension.$(my.context) as c
 .     add_imports_import()
@@ -50,6 +53,7 @@ import $(i.import:)\
 .endmacro
 .
 .macro global.extension__add_imports_within_context(context, subcontext)
+. log('extension__add_imports_within_context is deprecated.', 'DEPRECATED')
 . for project.extension
 .   for extension.$(my.subcontext) as c where context = context
 .     add_imports_import()
