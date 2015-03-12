@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<core name="extension" branch="master">
+<core name="extension" branch="master" description="4i core library handling extension level function (DEPRECATED)">
   <macro name="add_code"/>
   <macro name="add_code_within_context"/>
   <macro name="add_imports"/>
